@@ -1,0 +1,3 @@
+rootProject.name = 'GitManager'
+
+include ':app'
