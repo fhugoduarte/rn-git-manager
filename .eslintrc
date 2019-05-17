@@ -28,8 +28,8 @@
     "react-native/no-raw-text": "off",
     "import/no-unresolved": "off",
     "arrow-body-style": "warn",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "off",
+    "react-hooks/exhaustive-deps": "off",
     "react/jsx-no-undef": [
       2,
       {

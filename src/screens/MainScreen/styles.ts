@@ -1,6 +1,8 @@
+import { Animated, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
 import themes from '../../utils/themes';
+const { width, height } = Dimensions.get('screen');
 
 const Container = styled.View`
   flex: 1;
@@ -9,7 +11,15 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const BannerContainer = styled.View`
+const AnimatedContainer = styled(Animated.View)`
+  width: ${width};
+  height: ${height};
+  z-index: 3;
+  position: absolute;
+  background-color: ${themes.lightGray};
+`;
+
+const BannerContainer = styled(Animated.View)`
   flex: 0.2;
   flex-direction: row;
   justify-content: center;
@@ -30,7 +40,7 @@ const Title = styled.Text`
   font-size: 35px;
 `;
 
-const ButtonsContainer = styled.View`
+const ButtonsContainer = styled(Animated.View)`
   padding: 30px 20px;
   flex: 0.6;
 `;
@@ -72,6 +82,7 @@ const SignButtonTitle = styled.Text`
 
 export {
   Container,
+  AnimatedContainer,
   TitleContainer,
   Title,
   BannerContainer,
