@@ -4,26 +4,17 @@ import styled from 'styled-components/native';
 import themes from '../../utils/themes';
 const { width, height } = Dimensions.get('screen');
 
-const Container = styled.View`
+const Container = styled(Animated.View)`
   flex: 1;
   background-color: ${themes.lightGray};
   align-items: center;
   justify-content: center;
 `;
 
-const AnimatedContainer = styled(Animated.View)`
-  width: ${width};
-  height: ${height};
-  z-index: 3;
-  position: absolute;
-  background-color: ${themes.lightGray};
-`;
-
 const BannerContainer = styled(Animated.View)`
   flex: 0.2;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
 `;
 
 const GitLogo = styled.Image`
@@ -42,7 +33,7 @@ const Title = styled.Text`
 
 const ButtonsContainer = styled(Animated.View)`
   padding: 30px 20px;
-  flex: 0.6;
+  flex: 0.5;
 `;
 
 const ButtonsContainerTitle = styled.Text`
@@ -68,6 +59,11 @@ const SignBitBucketButton = styled(SignButton)`
   background-color: ${themes.bitBucket};
 `;
 
+const SkipButton = styled(SignButton)`
+  padding: 10px 20px;
+  background-color: ${themes.green};
+`;
+
 const SignButtonImage = styled.Image`
   width: 40px;
   height: 40px;
@@ -82,7 +78,6 @@ const SignButtonTitle = styled.Text`
 
 export {
   Container,
-  AnimatedContainer,
   TitleContainer,
   Title,
   BannerContainer,
@@ -91,6 +86,7 @@ export {
   ButtonsContainerTitle,
   SignGitButton,
   SignBitBucketButton,
+  SkipButton,
   SignButtonTitle,
   SignButtonImage,
 };

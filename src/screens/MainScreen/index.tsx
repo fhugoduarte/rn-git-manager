@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Animated } from 'react-native';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FWIcon from 'react-native-vector-icons/FontAwesome';
@@ -6,7 +6,6 @@ import FWIcon from 'react-native-vector-icons/FontAwesome';
 import themes from '../../utils/themes';
 import {
   Container,
-  AnimatedContainer,
   Title,
   TitleContainer,
   BannerContainer,
@@ -14,37 +13,30 @@ import {
   ButtonsContainerTitle,
   SignBitBucketButton,
   SignGitButton,
+  SkipButton,
   SignButtonTitle,
 } from './styles';
 
 function mainScreen(): JSX.Element {
   let animatedValue = new Animated.Value(0);
-  const [showAnimatedContainer, changeAnimatedContainer] = useState(true);
 
   useEffect((): void => {
     Animated.timing(animatedValue, {
       toValue: 100,
       duration: 1000,
       useNativeDriver: true,
-    }).start(
-      (): void => {
-        changeAnimatedContainer(false);
-      },
-    );
+    }).start();
   }, []);
 
   return (
-    <Container>
-      {showAnimatedContainer && (
-        <AnimatedContainer
-          style={{
-            opacity: animatedValue.interpolate({
-              inputRange: [0, 100],
-              outputRange: [1, 0],
-            }),
-          }}
-        />
-      )}
+    <Container
+      style={{
+        opacity: animatedValue.interpolate({
+          inputRange: [0, 100],
+          outputRange: [0, 1],
+        }),
+      }}
+    >
       <BannerContainer
         style={{
           transform: [
@@ -77,7 +69,7 @@ function mainScreen(): JSX.Element {
           ],
         }}
       >
-        <ButtonsContainerTitle>Entrar</ButtonsContainerTitle>
+        <ButtonsContainerTitle>Entrar com:</ButtonsContainerTitle>
         <SignGitButton>
           <FWIcon name="github" size={40} color="#FFF" />
           <SignButtonTitle>GitHub</SignButtonTitle>
@@ -87,6 +79,9 @@ function mainScreen(): JSX.Element {
           <SignButtonTitle>BitBucket</SignButtonTitle>
         </SignBitBucketButton>
       </ButtonsContainer>
+      <SkipButton>
+        <SignButtonTitle>Continuar sem Logar</SignButtonTitle>
+      </SkipButton>
     </Container>
   );
 }
