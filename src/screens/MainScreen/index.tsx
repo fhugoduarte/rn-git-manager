@@ -5,6 +5,7 @@ import FWIcon from 'react-native-vector-icons/FontAwesome';
 
 import ModalLogin from '../../components/UI/ModalLogin';
 import themes from '../../utils/themes';
+import { gitType } from '../../utils/types';
 import {
   Container,
   Title,
@@ -18,11 +19,6 @@ import {
   SignButtonTitle,
 } from './styles';
 
-enum gitType {
-  bitBucket = 'bitbucket',
-  gitHub = 'github',
-}
-
 interface State {
   open: boolean;
   git?: gitType;
@@ -30,18 +26,11 @@ interface State {
 
 const mainScreen: React.FC<{}> = () => {
   let animatedValue = new Animated.Value(0);
+
   const [modalLoginState, changeModalLoginState] = useState<State>({
     open: false,
     git: gitType.gitHub,
   });
-
-  const openLoginModal = (git: gitType): void => {
-    changeModalLoginState({ open: true, git });
-  };
-
-  const closeLoginModal = (): void => {
-    changeModalLoginState({ ...modalLoginState, open: false });
-  };
 
   useEffect((): void => {
     Animated.timing(animatedValue, {
@@ -51,11 +40,30 @@ const mainScreen: React.FC<{}> = () => {
     }).start();
   }, []);
 
+  const openLoginModal = (git: gitType): void => {
+    changeModalLoginState({ open: true, git });
+  };
+
+  const closeLoginModal = (): void => {
+    changeModalLoginState({ ...modalLoginState, open: false });
+  };
+
+  const onSubmit = (
+    username: string,
+    password: string,
+    git?: gitType,
+  ): void => {
+    console.warn('username', username);
+    console.warn('password', password);
+    console.warn('git', git);
+  };
+
   return (
     <Fragment>
       <ModalLogin
         visible={modalLoginState.open}
         git={modalLoginState.git}
+        onSubmit={onSubmit}
         onClose={closeLoginModal}
       />
       <Container

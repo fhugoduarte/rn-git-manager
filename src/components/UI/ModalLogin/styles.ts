@@ -19,11 +19,17 @@ const OverlayContainer = styled(Animated.View)`
   height: ${height};
 `;
 
-const ModalContainer = styled(Animated.View)`
-  width: 80%;
+const ModalContainer = styled.KeyboardAvoidingView`
+  flex: 1;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ModalContent = styled(Animated.View)`
+  width: ${width * 0.8};
   justify-content: center;
   background-color: white;
-  position: absolute;
   border-radius: 6px;
   border-width: 2px;
   border-color: gray;
@@ -76,6 +82,7 @@ export {
   Container,
   OverlayContainer,
   ModalContainer,
+  ModalContent,
   HeaderContainer,
   Label,
   Input,
