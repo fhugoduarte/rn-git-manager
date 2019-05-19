@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { Animated } from 'react-native';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FWIcon from 'react-native-vector-icons/FontAwesome';
@@ -52,70 +52,69 @@ const mainScreen: React.FC<{}> = () => {
   }, []);
 
   return (
-    <Container
-      style={{
-        opacity: animatedValue.interpolate({
-          inputRange: [0, 100],
-          outputRange: [0, 1],
-        }),
-      }}
-    >
-      <BannerContainer
+    <Fragment>
+      <ModalLogin
+        visible={modalLoginState.open}
+        git={modalLoginState.git}
+        onClose={closeLoginModal}
+      />
+      <Container
         style={{
-          transform: [
-            {
-              translateY: animatedValue.interpolate({
-                inputRange: [0, 100],
-                outputRange: [-100, 0],
-                extrapolate: 'clamp',
-              }),
-            },
-          ],
+          opacity: animatedValue.interpolate({
+            inputRange: [0, 100],
+            outputRange: [0, 1],
+          }),
         }}
       >
-        <MCIcon name="git" size={100} color={themes.gitColor} />
-        <TitleContainer>
-          <Title>Git</Title>
-          <Title>Manager</Title>
-        </TitleContainer>
-      </BannerContainer>
-      {modalLoginState.open && (
-        <ModalLogin
-          visible={modalLoginState.open}
-          git={modalLoginState.git}
-          onClose={closeLoginModal}
-        />
-      )}
-
-      <ButtonsContainer
-        style={{
-          transform: [
-            {
-              translateY: animatedValue.interpolate({
-                inputRange: [0, 100],
-                outputRange: [100, 0],
-                extrapolate: 'clamp',
-              }),
-            },
-          ],
-        }}
-      >
-        <ButtonsContainerTitle>Entrar com:</ButtonsContainerTitle>
-        <SignGitButton onPress={(): void => openLoginModal(gitType.gitHub)}>
-          <FWIcon name="github" size={40} color="#FFF" />
-          <SignButtonTitle>GitHub</SignButtonTitle>
-        </SignGitButton>
-        <SignBitBucketButton
-          onPress={(): void => openLoginModal(gitType.bitBucket)}
+        <BannerContainer
+          style={{
+            transform: [
+              {
+                translateY: animatedValue.interpolate({
+                  inputRange: [0, 100],
+                  outputRange: [-100, 0],
+                  extrapolate: 'clamp',
+                }),
+              },
+            ],
+          }}
         >
-          <FWIcon name="bitbucket" size={40} color="#FFF" />
-          <SignButtonTitle>BitBucket</SignButtonTitle>
-        </SignBitBucketButton>
-      </ButtonsContainer>
-      <SkipButton>
-        <SignButtonTitle>Continuar sem Logar</SignButtonTitle>
-      </SkipButton>
-    </Container>
+          <MCIcon name="git" size={100} color={themes.gitColor} />
+          <TitleContainer>
+            <Title>Git</Title>
+            <Title>Manager</Title>
+          </TitleContainer>
+        </BannerContainer>
+        <ButtonsContainer
+          style={{
+            transform: [
+              {
+                translateY: animatedValue.interpolate({
+                  inputRange: [0, 100],
+                  outputRange: [100, 0],
+                  extrapolate: 'clamp',
+                }),
+              },
+            ],
+          }}
+        >
+          <ButtonsContainerTitle>Entrar com:</ButtonsContainerTitle>
+          <SignGitButton onPress={(): void => openLoginModal(gitType.gitHub)}>
+            <FWIcon name="github" size={40} color="#FFF" />
+            <SignButtonTitle>GitHub</SignButtonTitle>
+          </SignGitButton>
+          <SignBitBucketButton
+            onPress={(): void => openLoginModal(gitType.bitBucket)}
+          >
+            <FWIcon name="bitbucket" size={40} color="#FFF" />
+            <SignButtonTitle>BitBucket</SignButtonTitle>
+          </SignBitBucketButton>
+        </ButtonsContainer>
+        <SkipButton>
+          <SignButtonTitle>Continuar sem Logar</SignButtonTitle>
+        </SkipButton>
+      </Container>
+    </Fragment>
   );
 };
 
