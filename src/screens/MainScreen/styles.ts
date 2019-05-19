@@ -1,25 +1,18 @@
-import { Animated, Dimensions } from 'react-native';
+import { Animated } from 'react-native';
 import styled from 'styled-components/native';
 
 import themes from '../../utils/themes';
-const { width, height } = Dimensions.get('screen');
 
 const Container = styled(Animated.View)`
   flex: 1;
   background-color: ${themes.lightGray};
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 const BannerContainer = styled(Animated.View)`
-  flex: 0.2;
   flex-direction: row;
   justify-content: center;
-`;
-
-const GitLogo = styled.Image`
-  width: 50px;
-  height: 50px;
 `;
 
 const TitleContainer = styled.View`
@@ -28,25 +21,24 @@ const TitleContainer = styled.View`
 
 const Title = styled.Text`
   font-weight: bold;
-  font-size: 35px;
+  font-size: 23px;
 `;
 
 const ButtonsContainer = styled(Animated.View)`
-  padding: 30px 20px;
-  flex: 0.5;
+  padding: 10px 20px;
 `;
 
 const ButtonsContainerTitle = styled.Text`
   font-weight: bold;
-  font-size: 30;
+  font-size: 18px;
   align-self: center;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 `;
 
 const SignButton = styled.TouchableOpacity`
   border-radius: 4px;
   margin-top: 20px;
-  padding: 10px 40px;
+  padding: 10px 20px;
   align-items: center;
   flex-direction: row;
 `;
@@ -64,14 +56,9 @@ const SkipButton = styled(SignButton)`
   background-color: ${themes.lightGreen};
 `;
 
-const SignButtonImage = styled.Image`
-  width: 40px;
-  height: 40px;
-`;
-
 const SignButtonTitle = styled.Text`
   color: #fff;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 400;
   padding-left: 15px;
 `;
@@ -81,12 +68,10 @@ export {
   TitleContainer,
   Title,
   BannerContainer,
-  GitLogo,
   ButtonsContainer,
   ButtonsContainerTitle,
   SignGitButton,
   SignBitBucketButton,
   SkipButton,
   SignButtonTitle,
-  SignButtonImage,
 };
