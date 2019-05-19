@@ -52,7 +52,7 @@ const modalLogin: React.FC<Props> = ({ visible, git, onClose }: Props) => {
     setTimeout((): void => {
       Animated.timing(animatedValue, {
         toValue: 100,
-        duration: 1000,
+        duration: 500,
         useNativeDriver: true,
       }).start();
     }, 100);
@@ -62,7 +62,7 @@ const modalLogin: React.FC<Props> = ({ visible, git, onClose }: Props) => {
     animatedValue.setValue(100);
     Animated.timing(animatedValue, {
       toValue: 200,
-      duration: 1000,
+      duration: 500,
       useNativeDriver: true,
     }).start(
       (): void => {
