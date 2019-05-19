@@ -8,7 +8,8 @@ const colors = {
   purple: '#6e5494',
   orange: '#c9510c',
   red: '#bd2c00',
-  green: '#6cc644',
+  lightGreen: '#6cc644',
+  darkGreen: '#2ebc4f',
   blue: '#4078c0',
 };
 

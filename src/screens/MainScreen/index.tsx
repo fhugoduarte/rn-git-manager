@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Animated } from 'react-native';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FWIcon from 'react-native-vector-icons/FontAwesome';
 
+import ModalLogin from '../../components/UI/ModalLogin';
 import themes from '../../utils/themes';
 import {
   Container,
@@ -17,8 +18,30 @@ import {
   SignButtonTitle,
 } from './styles';
 
-function mainScreen(): JSX.Element {
+enum gitType {
+  bitBucket = 'bitbucket',
+  gitHub = 'github',
+}
+
+interface State {
+  open: boolean;
+  git?: gitType;
+}
+
+const mainScreen: React.FC<{}> = () => {
   let animatedValue = new Animated.Value(0);
+  const [modalLoginState, changeModalLoginState] = useState<State>({
+    open: false,
+    git: gitType.gitHub,
+  });
+
+  const openLoginModal = (git: gitType): void => {
+    changeModalLoginState({ open: true, git });
+  };
+
+  const closeLoginModal = (): void => {
+    changeModalLoginState({ ...modalLoginState, open: false });
+  };
 
   useEffect((): void => {
     Animated.timing(animatedValue, {
@@ -56,6 +79,14 @@ function mainScreen(): JSX.Element {
           <Title>Manager</Title>
         </TitleContainer>
       </BannerContainer>
+      {modalLoginState.open && (
+        <ModalLogin
+          visible={modalLoginState.open}
+          git={modalLoginState.git}
+          onClose={closeLoginModal}
+        />
+      )}
+
       <ButtonsContainer
         style={{
           transform: [
@@ -70,11 +101,13 @@ function mainScreen(): JSX.Element {
         }}
       >
         <ButtonsContainerTitle>Entrar com:</ButtonsContainerTitle>
-        <SignGitButton>
+        <SignGitButton onPress={(): void => openLoginModal(gitType.gitHub)}>
           <FWIcon name="github" size={40} color="#FFF" />
           <SignButtonTitle>GitHub</SignButtonTitle>
         </SignGitButton>
-        <SignBitBucketButton>
+        <SignBitBucketButton
+          onPress={(): void => openLoginModal(gitType.bitBucket)}
+        >
           <FWIcon name="bitbucket" size={40} color="#FFF" />
           <SignButtonTitle>BitBucket</SignButtonTitle>
         </SignBitBucketButton>
@@ -84,6 +117,6 @@ function mainScreen(): JSX.Element {
       </SkipButton>
     </Container>
   );
-}
+};
 
 export default mainScreen;

@@ -61,7 +61,7 @@ const SignBitBucketButton = styled(SignButton)`
 
 const SkipButton = styled(SignButton)`
   padding: 10px 20px;
-  background-color: ${themes.green};
+  background-color: ${themes.lightGreen};
 `;
 
 const SignButtonImage = styled.Image`

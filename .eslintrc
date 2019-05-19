@@ -29,6 +29,12 @@
     "import/no-unresolved": "off",
     "arrow-body-style": "warn",
     "react-hooks/rules-of-hooks": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowTypedFunctionExpressions": true
+      }
+    ],
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-no-undef": [
       2,
