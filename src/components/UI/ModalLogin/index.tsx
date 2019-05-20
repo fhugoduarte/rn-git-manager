@@ -18,7 +18,7 @@ import {
 } from './styles';
 
 const visiblePrevios = (value: boolean): boolean => {
-  const ref = useRef<boolean>(false);
+  const ref = useRef(false);
   useEffect(
     (): void => {
       ref.current = value;
@@ -45,7 +45,7 @@ const modalLogin: React.FC<Props> = ({
   const [password, setPassword] = useState('');
   const [keyboardOpened, setKeyboardStatus] = useState(false);
 
-  const modalRef = useRef(null);
+  const modalRef = useRef<any>(null);
   const prevVisible = visiblePrevios(visible);
 
   const isBitBucket = git === gitType.bitBucket;
