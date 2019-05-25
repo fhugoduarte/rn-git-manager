@@ -1,6 +1,7 @@
 import { Animated } from 'react-native';
 import styled from 'styled-components/native';
 
+import Text from '../../components/common/Text';
 import themes from '../../utils/themes';
 
 const Container = styled(Animated.View)`
@@ -19,7 +20,7 @@ const TitleContainer = styled.View`
   padding: 0px 10px;
 `;
 
-const Title = styled.Text`
+const Title = styled(Text)`
   font-weight: bold;
   font-size: 23px;
 `;
@@ -28,7 +29,7 @@ const ButtonsContainer = styled(Animated.View)`
   padding: 10px 20px;
 `;
 
-const ButtonsContainerTitle = styled.Text`
+const ButtonsContainerTitle = styled(Text)`
   font-weight: bold;
   font-size: 18px;
   align-self: center;
@@ -56,7 +57,7 @@ const SkipButton = styled(SignButton)`
   background-color: ${themes.lightGreen};
 `;
 
-const SignButtonTitle = styled.Text`
+const SignButtonTitle = styled(Text)`
   color: #fff;
   font-size: 18px;
   font-weight: 400;

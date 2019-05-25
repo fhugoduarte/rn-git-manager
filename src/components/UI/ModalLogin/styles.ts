@@ -1,6 +1,7 @@
 import { Animated, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
+import Text from '../../common/Text';
 import themes from '../../../utils/themes';
 const { width, height } = Dimensions.get('screen');
 
@@ -41,7 +42,7 @@ const HeaderContainer = styled.View`
   align-items: center;
 `;
 
-const Label = styled.Text`
+const Label = styled(Text)`
   font-size: 18px;
   font-weight: bold;
   padding: 15px 5px;
@@ -71,7 +72,7 @@ const SignInButton = styled.TouchableOpacity`
   background-color: ${themes.darkGreen};
 `;
 
-const SignInButtonTitle = styled.Text`
+const SignInButtonTitle = styled(Text)`
   color: #fff;
   font-size: 18px;
   font-weight: 400;

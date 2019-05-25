@@ -89,8 +89,8 @@ const mainScreen: React.FC<{}> = () => {
         >
           <MCIcon name="git" size={60} color={themes.gitColor} />
           <TitleContainer>
-            <Title>Git</Title>
-            <Title>Manager</Title>
+            <Title text="Git" translate={false} />
+            <Title text="Manager" translate={false} />
           </TitleContainer>
         </BannerContainer>
         <ButtonsContainer
@@ -106,20 +106,20 @@ const mainScreen: React.FC<{}> = () => {
             ],
           }}
         >
-          <ButtonsContainerTitle>Entrar com:</ButtonsContainerTitle>
+          <ButtonsContainerTitle text="loginTitle" />
           <SignGitButton onPress={(): void => openLoginModal(gitType.gitHub)}>
             <FWIcon name="github" size={30} color="#FFF" />
-            <SignButtonTitle>GitHub</SignButtonTitle>
+            <SignButtonTitle text="gitHub" />
           </SignGitButton>
           <SignBitBucketButton
             onPress={(): void => openLoginModal(gitType.bitBucket)}
           >
             <FWIcon name="bitbucket" size={30} color="#FFF" />
-            <SignButtonTitle>BitBucket</SignButtonTitle>
+            <SignButtonTitle text="bitBucket" />
           </SignBitBucketButton>
         </ButtonsContainer>
         <SkipButton>
-          <SignButtonTitle>Continuar sem Logar</SignButtonTitle>
+          <SignButtonTitle text="continueWidthoutSignIn" />
         </SkipButton>
       </Container>
     </Fragment>

@@ -1,6 +1,6 @@
 import React from 'react';
-import MainScreen from './src/screens/MainScreen';
+import App from './src';
 
-const app = (): JSX.Element => <MainScreen />;
+const app = (): JSX.Element => <App />;
 
 export default app;

@@ -162,13 +162,13 @@ const modalLogin: React.FC<Props> = ({
               <FWIcon name="github" size={50} color={themes.gitHub} />
             )}
           </HeaderContainer>
-          <Label>Usuário ou Email</Label>
+          <Label text="userLabel" />
           <Input value={username} onChangeText={setUsername} />
-          <Label>Senha</Label>
+          <Label text="passwordLabel" />
           <Input value={password} onChangeText={setPassword} />
           <SignInButtonContainer>
             <SignInButton onPress={submit}>
-              <SignInButtonTitle>Entrar</SignInButtonTitle>
+              <SignInButtonTitle text="signIn" />
             </SignInButton>
           </SignInButtonContainer>
         </ModalContent>
