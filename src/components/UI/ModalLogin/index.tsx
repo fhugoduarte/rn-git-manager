@@ -31,7 +31,7 @@ interface Props {
   visible: boolean;
   git: gitType | undefined;
   onClose(): void;
-  onSubmit(username: string, password: string, git?: gitType): void;
+  onSubmit(username: string, git?: gitType): void;
 }
 
 const modalLogin: React.FC<Props> = ({
@@ -42,7 +42,6 @@ const modalLogin: React.FC<Props> = ({
 }: Props) => {
   let animatedValue = new Animated.Value(0);
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [keyboardOpened, setKeyboardStatus] = useState(false);
 
   const modalRef = useRef<any>(null);
@@ -103,7 +102,6 @@ const modalLogin: React.FC<Props> = ({
         }
         Keyboard.dismiss();
         setUsername('');
-        setPassword('');
       },
     );
   };
@@ -126,7 +124,7 @@ const modalLogin: React.FC<Props> = ({
 
   const submit = (): void => {
     Keyboard.dismiss();
-    if (username !== '' && password !== '') onSubmit(username, password, git);
+    if (username !== '') onSubmit(username, git);
   };
 
   return (
@@ -164,8 +162,6 @@ const modalLogin: React.FC<Props> = ({
           </HeaderContainer>
           <Label text="userLabel" />
           <Input value={username} onChangeText={setUsername} />
-          <Label text="passwordLabel" />
-          <Input value={password} onChangeText={setPassword} />
           <SignInButtonContainer>
             <SignInButton onPress={submit}>
               <SignInButtonTitle text="signIn" />

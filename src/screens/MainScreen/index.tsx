@@ -48,13 +48,8 @@ const mainScreen: React.FC<{}> = () => {
     changeModalLoginState({ ...modalLoginState, open: false });
   };
 
-  const onSubmit = (
-    username: string,
-    password: string,
-    git?: gitType,
-  ): void => {
+  const onSubmit = (username: string, git?: gitType): void => {
     console.warn('username', username);
-    console.warn('password', password);
     console.warn('git', git);
   };
 
