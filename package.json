@@ -9,13 +9,17 @@
   "dependencies": {
     "@types/react": "16.8.17",
     "@types/react-native": "0.57.55",
+    "@types/react-navigation": "3.0.7",
     "@types/styled-components": "4.1.15",
+    "axios": "0.18.0",
     "eslint-plugin-react": "7.13.0",
     "i18n-js": "3.2.2",
     "react": "16.8.3",
     "react-native": "0.59.8",
+    "react-native-gesture-handler": "1.2.1",
     "react-native-localize": "1.1.2",
     "react-native-vector-icons": "6.4.2",
+    "react-navigation": "3.11.0",
     "reactotron-react-native": "3.5.0",
     "styled-components": "4.2.0"
   },

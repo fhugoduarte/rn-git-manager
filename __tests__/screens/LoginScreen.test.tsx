@@ -1,14 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import MainScreen from '../../src/screens/MainScreen';
+import LoginScreen from '../../src/screens/LoginScreen';
 
 jest.mock('NativeAnimatedHelper');
 jest.useFakeTimers();
 
-describe('Render MainScreen', (): void => {
+describe('Render LoginScreen', (): void => {
   it('should renders correctly', (): void => {
-    const tree = renderer.create(<MainScreen />).toJSON();
+    const tree = renderer.create(<LoginScreen />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

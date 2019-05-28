@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as RNLocalize from 'react-native-localize';
 import { setI18nConfig } from './i18n';
 
-import MainScreen from './screens/MainScreen';
+import Routes from './routes';
 
 const app = (): JSX.Element => {
   const [, updateState] = useState();
@@ -23,7 +23,7 @@ const app = (): JSX.Element => {
     [],
   );
 
-  return <MainScreen />;
+  return <Routes />;
 };
 
 export default app;

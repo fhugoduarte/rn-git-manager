@@ -1,5 +1,9 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { Animated } from 'react-native';
+import {
+  NavigationScreenProps,
+  NavigationScreenComponent,
+} from 'react-navigation';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FWIcon from 'react-native-vector-icons/FontAwesome';
 
@@ -24,7 +28,12 @@ interface State {
   git?: gitType;
 }
 
-const mainScreen: React.FC<{}> = () => {
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props extends NavigationScreenProps {}
+
+const loginScreen: NavigationScreenComponent<Props> = ({
+  navigation,
+}: Props) => {
   let animatedValue = new Animated.Value(0);
 
   const [modalLoginState, changeModalLoginState] = useState<State>({
@@ -49,8 +58,7 @@ const mainScreen: React.FC<{}> = () => {
   };
 
   const onSubmit = (username: string, git?: gitType): void => {
-    console.warn('username', username);
-    console.warn('git', git);
+    navigation.navigate('ProfileScreen', { username, git });
   };
 
   return (
@@ -121,4 +129,4 @@ const mainScreen: React.FC<{}> = () => {
   );
 };
 
-export default mainScreen;
+export default loginScreen;
